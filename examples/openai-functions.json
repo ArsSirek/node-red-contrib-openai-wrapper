@@ -1,0 +1,77 @@
+[
+  {
+    "id": "6af96c9ec944a593",
+    "type": "inject",
+    "z": "36d550d6a7ec49b9",
+    "name": "",
+    "props": [],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 250,
+    "y": 300,
+    "wires": [
+      [
+        "4513750853f94554"
+      ]
+    ]
+  },
+  {
+    "id": "1e4eebac2c4d789a",
+    "type": "debug",
+    "z": "36d550d6a7ec49b9",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 850,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "4513750853f94554",
+    "type": "function",
+    "z": "36d550d6a7ec49b9",
+    "name": "prepare payload",
+    "func": "\n\nmsg.payload = {\n    model: \"gpt-3.5-turbo-0613\",\n    messages: [\n        {\n            role: \"user\",\n            content: \"What is the weather like in Boston?\"\n        }\n    ],\n    functions: [\n        {\n          name: \"get_current_weather\",\n          description: \"Get the current weather in a given location\",\n          parameters: {\n            type: \"object\",\n            properties: {\n              location: {\n                type: \"string\",\n                description: \"The city and state, e.g. San Francisco, CA\"\n              },\n              unit: {\n                type: \"string\",\n                enum: [\"celsius\", \"fahrenheit\"]\n              }\n            },\n            required: [\"location\"]\n          }\n        }\n      ],\n  max_tokens: 2000,\n  user: 'some user id', /* optinal will help to filter requests and its costs on future reports in open ai page */\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 300,
+    "wires": [
+      [
+        "de2516c89d7db5e9"
+      ]
+    ]
+  },
+  {
+    "id": "de2516c89d7db5e9",
+    "type": "openai-api",
+    "z": "36d550d6a7ec49b9",
+    "name": "OpenAiAPI",
+    "config": "f7e5195305d1dc54",
+    "payload": "payload",
+    "x": 650,
+    "y": 300,
+    "wires": [
+      [
+        "1e4eebac2c4d789a"
+      ]
+    ]
+  },
+  {
+    "id": "f7e5195305d1dc54",
+    "type": "openai-api-config",
+    "name": "openai-api-config"
+  }
+]

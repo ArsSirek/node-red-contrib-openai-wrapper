@@ -1,0 +1,33 @@
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('openai-api-config', {
+		category: 'config',
+		defaults: {
+			name: { value: "openai-api-config" },
+		},
+		credentials: {
+            orgId: {value: '', required: true},
+            apiKey: {value: '', required: true}
+		},
+        color: "rgb(36, 165, 222)",
+		label: function() {
+			return this.name;
+		}
+	});
+</script>
+
+<script type="text/html"  data-template-name="openai-api-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-orgId"><i class="fa fa-lock"></i> Organization</label>
+        <input type="text" id="node-config-input-orgId">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apiKey"><i class="fa fa-lock"></i> API Key</label>
+        <input type="text" id="node-config-input-apiKey">
+    </div>
+</script>
