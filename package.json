@@ -1,0 +1,42 @@
+{
+  "name": "node-red-contrib-openai-wrapper",
+  "version": "1.0.2",
+  "description": "adds Node to call openai api via openai npm package",
+  "main": "openai-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ArsSirek/node-red-contrib-openai-wrapper/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArsSirek/node-red-contrib-openai-wrapper.git"
+  },
+  "keywords": [
+    "node-red",
+    "openai",
+    "chatgpt",
+    "openai api",
+    "openai node"
+  ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "openai-api": "openai-api.js",
+      "openai-api-config": "openai-api-config.js"
+    }
+  },
+  "author": "Arsen Sirekanyan",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "homepage": "https://github.com/ArsSirek/node-red-contrib-openai-wrapper#readme",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "openai": "^4.0.1"
+  }
+}
