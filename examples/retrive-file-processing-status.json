@@ -1,0 +1,69 @@
+[
+  {
+    "id": "438be8a76029c3e8",
+    "type": "inject",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 200,
+    "wires": [
+      [
+        "971f1f2d9757bafd"
+      ]
+    ]
+  },
+  {
+    "id": "35236ee67cc0b709",
+    "type": "debug",
+    "z": "f6f2187d.f17ca8",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "971f1f2d9757bafd",
+    "type": "openai-api",
+    "z": "f6f2187d.f17ca8",
+    "name": "Retrive file processing status",
+    "config": "10740a80eb874e1c",
+    "payload": "payload",
+    "api": "files.list",
+    "x": 380,
+    "y": 200,
+    "wires": [
+      [
+        "35236ee67cc0b709"
+      ]
+    ]
+  },
+  {
+    "id": "10740a80eb874e1c",
+    "type": "openai-api-config",
+    "name": "openai-api-config"
+  }
+]

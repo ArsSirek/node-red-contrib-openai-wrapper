@@ -37,6 +37,7 @@
     "example": "examples"
   },
   "dependencies": {
+    "natural": "^6.7.0",
     "openai": "^4.0.1"
   }
 }

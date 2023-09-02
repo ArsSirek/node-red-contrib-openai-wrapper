@@ -1,0 +1,88 @@
+[
+  {
+    "id": "aa8dd6aba56f4fe8",
+    "type": "inject",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 140,
+    "y": 320,
+    "wires": [
+      [
+        "dcde1c3b24c737d8"
+      ]
+    ]
+  },
+  {
+    "id": "56395f83c0bb5157",
+    "type": "debug",
+    "z": "f6f2187d.f17ca8",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 860,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "dcde1c3b24c737d8",
+    "type": "function",
+    "z": "f6f2187d.f17ca8",
+    "name": "data to create fine-tuning job",
+    "func": "\nmsg.payload = {\n    model: 'gpt-3.5-turbo-0613',\n    training_file: 'file-rASdQRh5rM8Lrf1DSstgKe6B',\n    hyperparameters: {\n        n_epochs: 10, /* advice would be to leave the epochs at 4, unless you have a very small dataset. */\n    },\n    \n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 380,
+    "y": 320,
+    "wires": [
+      [
+        "86ee5980069322d9"
+      ]
+    ]
+  },
+  {
+    "id": "86ee5980069322d9",
+    "type": "openai-api",
+    "z": "f6f2187d.f17ca8",
+    "name": "Create Fine tune job",
+    "config": "10740a80eb874e1c",
+    "payload": "payload",
+    "api": "fineTuning.create",
+    "x": 660,
+    "y": 320,
+    "wires": [
+      [
+        "56395f83c0bb5157"
+      ]
+    ]
+  },
+  {
+    "id": "10740a80eb874e1c",
+    "type": "openai-api-config",
+    "name": "openai-api-config"
+  }
+]

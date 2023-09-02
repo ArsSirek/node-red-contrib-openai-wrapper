@@ -5,10 +5,11 @@
 			name: {value: "OpenAiAPI"},
             config: {value: "", type: "openai-api-config", required: true},
 			payload: {value: "payload", required: true},
+			api: {value: "chat.completions.create", required: true},
 		},
 		inputs: 1,
 		outputs: 1,
-		color: "rgb(16, 163, 127)",
+		color: "rgb(22,229,178)",
 		label: function () {
 			return (this.name || "openai-api")
 		}
@@ -25,8 +26,24 @@
         <input type="text" id="node-input-config"/>
     </div>
     <div class="form-row">
-        <label for="node-input-payload"><i class="icon-bookmark"></i> payload field</label>
+        <label for="node-input-payload"><i class="icon-bookmark"></i> Payload field</label>
         <input type="text" id="node-input-payload"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-api"><i class="icon-bookmark"></i> Api to call </label>
+        <select name="cars" id="node-input-api">
+            <option value="chat.completions.create">chat.completions.create</option>
+            <option value="fineTuning.create">fineTuning.create</option>
+            <option value="fineTuning.list">fineTuning.list</option>
+            <option value="fineTuning.retrieve">fineTuning.retrieve</option>
+            <option value="fineTuning.cancel">fineTuning.cancel</option>
+            <option value="fineTuning.listEvents">fineTuning.listEvents</option>
+            <option value="files.create">files.create</option>
+            <option value="files.validate">files.validate</option>
+            <option value="files.list">files.list</option>
+            <option value="files.retrieve">files.retrieve</option>
+            <option value="files.delete">files.delete</option>
+        </select>
     </div>
 
 </script>
